@@ -1,0 +1,82 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400&display=swap');
+
+*{
+    box-sizing: border-box;
+}
+
+html, body{
+    background: #2F3034;
+}
+
+html{
+    margin: 0;
+}
+
+body, button, input, select, textarea{
+    font-family: 'Poppins', sans-serif;
+    color: white
+}
+
+
+h1{
+    font-size: 30px;
+    text-align: center;
+}
+
+.time{
+    width: 200px;
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 60px;
+    margin: 50px auto 0;
+    border: 6px solid #5280E2;
+    border-radius: 100%;
+    color: white;
+}
+
+.buttons-time{
+    padding: 0;
+    width: 350px;
+    display: flex;
+    justify-content: space-around;
+    margin: 30px auto;
+}
+
+.option{
+    display: flex;
+    justify-content: center;
+}
+
+.buttons-time button{
+    width: 70px;
+    height: 50px;
+    margin-top: 10px;
+    border: none;
+    border-radius: 8px;
+    background: transparent;
+    color: white;
+    margin: auto;
+}
+
+svg{
+    width: 70px;
+    height: 50px;
+}
+
+.option button{
+    width: 100px;
+    height: 30px;
+    background: #5280E2;
+    font-size: 12px;
+    border-radius: 8px;
+    border: none;
+    color: white;
+    font-weight: bold;
+}
+
+#btn_pomodoro{
+    margin-right: 20px;
+}
+
