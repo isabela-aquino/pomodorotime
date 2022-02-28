@@ -1,61 +1,51 @@
+let TIMER = null;
+let TIME_IN_SECONDS
 
-let minutes, seconds, counterInterval = undefined;
+const playButton = document.getElementById('play');
+const pauseButton = document.getElementById('pause');
+const resetButton = document.getElementById('reset');
 
-const minutesEl = document.getElementById('minutes');
-const secondsEl = document.getElementById('seconds');
-
-resetCounter();
+playButton.addEventListener('click', startCounter);
+pauseButton.addEventListener('click', pauseCounter);
+resetButton.addEventListener('click', resetCounter);
 
 function workPomodoro(){
-    minutes = 25;
-    seconds = 00;
-    updateCounterEl()
+    const INITIAL_TIME_IN_SECONDS = 25 * 60;
+    TIME_IN_SECONDS = INITIAL_TIME_IN_SECONDS;
+    updateDom();
 }
 
 function breakPomodoro(){
-    minutes = 05;
-    seconds = 00;
-    updateCounterEl()
-}
-
-
-function updateCounterEl(){
-    minutesEl.innerHTML = minutes < 10 ? `0${minutes}`: minutes;
-    secondsEl.innerHTML = seconds < 10 ? `0${seconds}`: seconds;
+    const INITIAL_TIME_IN_SECONDS = 5 * 60;
+    TIME_IN_SECONDS = INITIAL_TIME_IN_SECONDS;
+    updateDom();
 }
 
 function startCounter(){
-    if(counterInterval) return;
-
-    counterInterval = setInterval(() => {
-    if (seconds === 0){ 
-        if (minutes === 0) return destroyInterval();;
-        seconds = 59;
-        --minutes;
-    } 
-    else{
-        --seconds;
-    }
-    updateCounterEl();
+    TIMER = setInterval( () =>{
+        TIME_IN_SECONDS--;
+        updateDom();
     },1000)
 }
 
 function pauseCounter(){
-    destroyInterval();
-}
-
-function destroyInterval(){
-    clearInterval(counterInterval);
-    counterInterval = undefined;
+    clearInterval(TIMER);
 }
 
 function resetCounter(){
-    destroyInterval();
-    minutes = 00;
-    seconds = 00;
-    updateCounterEl();
+    clearInterval(TIMER);
+    const INITIAL_TIME_IN_SECONDS = 00;
+    TIME_IN_SECONDS = INITIAL_TIME_IN_SECONDS;
+    updateDom();
 }
 
+function updateDom(){
+    const minutes = Math.floor(TIME_IN_SECONDS/60);
+    document.getElementById('minutes').innerHTML = String(minutes).padStart(2,0);
+
+    const seconds = Math.floor(TIME_IN_SECONDS%60);
+    document.getElementById('seconds').innerHTML = String(seconds).padStart(2,0);
+}
 
 function darkMode() {
     var element = document.body;
