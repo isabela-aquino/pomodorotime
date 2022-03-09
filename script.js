@@ -4,10 +4,13 @@ let TIME_IN_SECONDS
 const playButton = document.getElementById('play');
 const pauseButton = document.getElementById('pause');
 const resetButton = document.getElementById('reset');
+const theme = window.localStorage.getItem("theme");
 
 playButton.addEventListener('click', startCounter);
 pauseButton.addEventListener('click', pauseCounter);
 resetButton.addEventListener('click', resetCounter);
+
+if (theme === "dark-mode") document.body.classList.add("dark-mode");
 
 function workPomodoro(){
     const INITIAL_TIME_IN_SECONDS = 25 * 60;
@@ -22,12 +25,19 @@ function breakPomodoro(){
 }
 
 function startCounter(){
-    TIMER = setInterval( () =>{
-        TIME_IN_SECONDS--;
-        updateDom();
-    },1000)
+
+    if ((document.getElementById('minutes').innerHTML === '00') & (document.getElementById('seconds').innerHTML === '00')){
+        alert('Selecione o Tempo');
+    }
+    else{
+        TIMER = setInterval( () =>{
+            TIME_IN_SECONDS--;
+            updateDom();
+        },1000)
+        
+        playButton.disabled = true;
+    }
     
-    playButton.disabled = true;
 }
 
 function pauseCounter(){
@@ -54,9 +64,11 @@ function updateDom(){
 function darkMode() {
     var element = document.body;
     element.className = "dark-mode";
+    window.localStorage.setItem("theme", "dark-mode");
   }
 
   function lightMode() {
     var element = document.body;
     element.className = "light-mode";
+    window.localStorage.setItem("theme", "light-mode");
   }
