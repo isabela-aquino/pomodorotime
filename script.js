@@ -26,10 +26,13 @@ function startCounter(){
         TIME_IN_SECONDS--;
         updateDom();
     },1000)
+    
+    playButton.disabled = true;
 }
 
 function pauseCounter(){
     clearInterval(TIMER);
+    playButton.disabled = false;
 }
 
 function resetCounter(){
@@ -37,6 +40,7 @@ function resetCounter(){
     const INITIAL_TIME_IN_SECONDS = 00;
     TIME_IN_SECONDS = INITIAL_TIME_IN_SECONDS;
     updateDom();
+    playButton.disabled = false;
 }
 
 function updateDom(){

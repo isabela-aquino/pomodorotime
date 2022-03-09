@@ -141,3 +141,9 @@ h1{
         margin-bottom: 10px;
     }
 }
+
+button:disabled{
+    color: var(--dark-grey);
+    cursor: not-allowed;
+}
+
