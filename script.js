@@ -1,5 +1,7 @@
 let TIMER = null;
 let TIME_IN_SECONDS
+let minutes = document.getElementById('minutes').innerHTML;
+let seconds = document.getElementById('seconds').innerHTML;
 
 const playButton = document.getElementById('play');
 const pauseButton = document.getElementById('pause');
@@ -26,7 +28,7 @@ function breakPomodoro(){
 
 function startCounter(){
 
-    if ((document.getElementById('minutes').innerHTML === '00') & (document.getElementById('seconds').innerHTML === '00')){
+    if ((minutes === '00') & (seconds === '00')){
         alert('Selecione o Tempo');
     }
     else{
