@@ -1,4 +1,4 @@
-let TIMER = null;
+let TIMER = null
 let TIME_IN_SECONDS
 let minutes = document.getElementById('minutes').innerHTML;
 let seconds = document.getElementById('seconds').innerHTML;
@@ -28,7 +28,7 @@ function breakPomodoro(){
 
 function startCounter(){
 
-    if ((minutes === '00') & (seconds === '00')){
+    if ((minutes === 00) & (seconds === 00)){
         alert('Selecione o Tempo');
     }
     else{
@@ -56,10 +56,10 @@ function resetCounter(){
 }
 
 function updateDom(){
-    const minutes = Math.floor(TIME_IN_SECONDS/60);
+    minutes = Math.floor(TIME_IN_SECONDS/60);
     document.getElementById('minutes').innerHTML = String(minutes).padStart(2,0);
 
-    const seconds = Math.floor(TIME_IN_SECONDS%60);
+    seconds = Math.floor(TIME_IN_SECONDS%60);
     document.getElementById('seconds').innerHTML = String(seconds).padStart(2,0);
 }
 
